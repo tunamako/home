@@ -1,0 +1,16 @@
+/*
+
+!.gitignore
+
+!.aliases
+!lembar.sh
+!.xinitrc
+!.Xresources
+!.zprofile
+!.zshrc
+
+!/.config/
+/.config/*
+!/.config/bspwm/
+!/.config/compton.conf
+!/.config/sxhkd/

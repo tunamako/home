@@ -1,0 +1,59 @@
+! Xresources file
+
+URxvt*scrollBar: false
+
+URxvt.internalBorder: 8
+
+URxvt*font: xft:Monospace:pixelsize=15
+URxvt*boldFont: xft:Monospace:pixelsize=15
+URxvt*letterSpace: -1
+URxvt*lineSpace: 0
+
+URxvt.depth: 32
+
+! special
+*.foreground:   #c2bebf
+*.background:   #282828
+*.cursorColor:  #c2bebf
+
+! black
+*.color0:       #f0b4c0
+*.color8:       #e3abb6
+
+! red
+*.color1:       #d983a0
+*.color9:       #c56f8c
+
+! green
+*.color2:       #b3709c
+*.color10:      #9f5c88
+
+! yellow
+*.color3:       #8269a2
+*.color11:      #695297
+
+! blue
+*.color4:       #6563a2
+*.color12:      #4e4c87
+
+! magenta
+*.color5:       #545b9f
+*.color13:      #3e4584
+
+! cyan
+*.color6:       #494c93
+*.color14:      #353893
+
+! white
+*.color7:       #eee8d5
+*.color15:      #eee8d5
+
+
+URxvt*perl-ext-common:   ...,resize-font,...
+
+URxct.resize-font.smaller: C-Down
+URxct.resize-font.bigger: C-Up
+
+URxvt*iso14755: false
+URxvt*iso14755_52: false
+
