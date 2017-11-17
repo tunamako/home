@@ -40,7 +40,7 @@ fi
 
 xsetroot -cursor_name left_ptr
 
-sh lembar.sh | lemonbar  -g 1714x40+103+30 -f "xft:Monospace:size=10"  -p &
+sh lembar.sh | lemonbar  -g 1920 -f "xft:Monospace:size=10"  -p &
 sh ~/.fehbg &
 sxhkd &
 compton &

@@ -1,5 +1,5 @@
 alias "salsamixer"="alsamixer"
 alias firefox="GTK_THEME=FlatStudioGray firefox"
 alias ls='ls --color=auto'
-alias squeak='sudo /usr/bin/Squeak/bin/squeak /home/michael/Documents/Squeak5.1-16548-32bit.image' 
+alias squeak='sudo /usr/bin/Squeak/bin/squeak'
 
