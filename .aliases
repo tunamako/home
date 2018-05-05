@@ -1,5 +1,3 @@
-alias "salsamixer"="alsamixer"
-alias firefox="GTK_THEME=FlatStudioGray firefox"
 alias ls='ls --color=auto'
 alias squeak='sudo /usr/bin/Squeak/bin/squeak'
-alias restartWifi='sudo systemctl restart netctl-auto@wlp4s0.service'
+alias restartWifi='sudo rfkill unblock wifi; sudo systemctl restart netctl-auto@wlp4s0.service'
