@@ -6,14 +6,7 @@
 # Fetch infos on your computer, and print them to stdout every second.
 
 clock() {
-        DATETIME=$(date "+%a %b %d, %T")
-
-        echo -n "$DATETIME"
-}
-
-battery() {
-        BATPERC=$(acpi --battery | cut -d, -f2)   
-        echo "$BATPERC   "
+        date "+%a %b %d, %T"
 }
 
 volume() {
@@ -21,8 +14,12 @@ volume() {
 }
 
 cpuload() {
-    LINE=`ps -eo pcpu |grep -vE '^\s*(0.0|%CPU)' |sed -n '1h;$!H;$g;s/\n/ +/gp'`
-    bc <<< $LINE
+    IDLE=`mpstat 1 1 | grep -A 5 "%idle" | tail -n 1 | awk '{print $12}'`
+    bc <<< "100-${IDLE}"
+}
+
+memory() {
+    free -m | grep Mem | awk '{print 100 * $3/$2}' | grep -o '^[0-9]*\.[0-9]\{2\}'
 }
 
 network() {
@@ -36,22 +33,51 @@ network() {
     fi
     ip link show $eth0 | grep 'state UP' >/dev/null && int=$eth0 ||int=$wifi
 
-    #int=eth0
-
     ping -c 1 8.8.8.8 >/dev/null 2>&1 && 
-        echo "$int Connected" || echo "$int Disconnected"
+        echo "Connected" || echo "Disconnected"
 }
 
 # This loop will fill a buffer with our infos, and output it to stdout.
+Monitors=$(xrandr | grep -o "^.* connected" | sed "s/ connected//")
 while :; do
     buf="%{l}%{F#C2BEBF}%{B#282828}"
-    buf="   ${buf} $(clock) |"
+    buf="${buf} $(clock)  | "
     buf="${buf} $(network) "
-    buf="${buf} %{r} CPU: $(cpuload)% |"
-    buf="${buf} Volume: $(volume) |"
-    buf="${buf} Battery: $(battery)"
+    buf="${buf} %{r} MEM: $(memory)%  | "
+    buf="${buf} CPU:"
 
-    echo $buf
+    load=$(cpuload)
+    cpuloadlen=`echo -n $load | wc -c`
+
+    if [ $cpuloadlen -eq 5 ]                       
+    then
+        buf="${buf} ${load}%  "
+    fi 
+
+    if [ $cpuloadlen -eq 4 ]
+    then
+        buf="${buf}   ${load}%  "
+    fi
+
+    if [ $cpuloadlen -eq 3 ]
+    then
+        buf="${buf}   0${load}%  "
+    fi 
+
+    #buf="${buf}${load}%  "
+
+    #buf="${buf} Volume: $(volume) |"
+    #buf="${buf} Battery: $(battery)"
+
+    tmp=0
+    barout=""
+    for m in $(echo "$Monitors"); do
+	   barout+="%{S${tmp}}$buf"
+   	    let tmp=$tmp+1
+    done
+
+    echo "$barout"
+
     # use `nowplaying scroll` to get a scrolling output!
-    sleep 1 # The HUD will be updated every second
+    #sleep 1 # The HUD will be updated every second
 done

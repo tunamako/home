@@ -3,6 +3,8 @@ HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 LD_LIBRARY_PATH=/usr/lib:/usr/lib32:/usr/lib64
+XDG_CURRENT_DESKTOP=KDE
+QT_QPA_PLATFORMTHEME="qt5ct"
 bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall

@@ -8,7 +8,7 @@ alt + Return
 
 # program launcher
 alt + d
-	dmenu_run -b -nb \#303030 -nf \#dedede -sb \#cccccc -sf \#262626 -fn xft:Monospace:size=10
+	dmenu_run -b -nb \#303030 -nf \#dedede -sb \#cccccc -sf \#262626 -fn xft:Roboto\ Mono:size=10
 
 # make sxhkd reload its configuration files:
 alt + Escape

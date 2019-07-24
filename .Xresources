@@ -4,9 +4,9 @@ URxvt*scrollBar: false
 
 URxvt.internalBorder: 8
 
-URxvt*font: xft:Monospace:pixelsize=15
-URxvt*boldFont: xft:Monospace:pixelsize=15
-URxvt*letterSpace: -1
+URxvt*font: xft:Roboto Mono:pixelsize=15
+URxvt*boldFont: xft:Roboto Mono:pixelsize=15
+URxvt*letterSpace: 0
 URxvt*lineSpace: 0
 
 URxvt.depth: 32
@@ -49,11 +49,9 @@ URxvt.depth: 32
 *.color15:      #eee8d5
 
 
-URxvt*perl-ext-common:   ...,resize-font,...
-
 URxct.resize-font.smaller: C-Down
 URxct.resize-font.bigger: C-Up
 
-URxvt*iso14755: false
-URxvt*iso14755_52: false
+!URxvt*iso14755: false
+!URxvt*iso14755_52: false
 

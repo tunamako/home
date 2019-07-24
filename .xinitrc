@@ -38,10 +38,10 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-xsetroot -cursor_name left_ptr
-
-sh lembar.sh | lemonbar  -g 1920 -f "xft:Monospace:size=10"  -p &
+sh lembar.sh | lemonbar -g 5120 -f "xft:Roboto Mono:size=10" -p &
 sh ~/.fehbg &
 sxhkd &
 compton &
+!urxvt &
 exec bspwm
+!exec i3
